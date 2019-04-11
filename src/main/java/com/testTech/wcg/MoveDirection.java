@@ -29,7 +29,7 @@ public enum MoveDirection {
     public MoveDirection turnLeft(){
         switch (this){
             case NORTH: return MoveDirection.WEST;
-            case EAST: return MoveDirection.SOUTH;
+            case WEST: return MoveDirection.SOUTH;
             case SOUTH: return MoveDirection.EAST;
             default: return MoveDirection.NORTH;
         }

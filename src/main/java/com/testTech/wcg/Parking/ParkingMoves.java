@@ -4,26 +4,28 @@ import com.testTech.wcg.MoveDirection;
 
 public class ParkingMoves {
 
+    public static final String VALID_INSTRUCTIONS = "FRL";
+
     private int side_x;
     private int sidy_y;
 
-    private int start_x;
-    private int start_y;
+    private int startX;
+    private int startY;
 
     private MoveDirection direction;
 
     private String moves;
 
-    private int new_x;
-    private int new_y;
+    private int newX;
+    private int newY;
 
     public ParkingMoves(String startXY, String moves, MoveDirection direction, int side_x, int sidy_y){
         this.side_x = side_x;
         this.sidy_y = sidy_y;
         this.setStartPosition(startXY);
         this.setMoves(moves);
-        this.new_x = start_x;
-        this.new_y = start_y;
+        this.newX = startX;
+        this.newY = startY;
         this.direction = direction;
     }
 
@@ -39,20 +41,20 @@ public class ParkingMoves {
         }
     }
 
-    public int getStart_x(){
-        return start_x;
+    public int getStartX(){
+        return startX;
     }
 
-    public void setStart_x(int start_x){
-        this.start_x = start_x;
+    public void setStartX(int startX){
+        this.startX = startX;
     }
 
-    public int getStart_y(){
-        return start_y;
+    public int getStartY(){
+        return startY;
     }
 
-    public void setStart_y(int start_y){
-        this.start_y = start_y;
+    public void setStartY(int startY){
+        this.startY = startY;
     }
 
     public String getMoves(){
@@ -60,15 +62,16 @@ public class ParkingMoves {
     }
 
     public void setMoves(String moves){
+        if(validMoves(moves))
         this.moves = moves;
     }
 
     public String getStartPosition(){
-        return toPosition(start_y, start_x);
+        return toPosition(startY, startX);
     }
 
     public String getNewPosition(){
-        return toPosition(new_y, new_x);
+        return toPosition(newY, newX);
     }
 
     public MoveDirection getDirection(){
@@ -81,27 +84,31 @@ public class ParkingMoves {
 
     private String toPosition(int y, int x){
         return new StringBuffer()
-                .append("(")
                 .append(y)
                 .append(",")
                 .append(x)
-                .append(")")
                 .toString();
     }
 
     private void setStartPosition(String startXY){
         String cp [] = startXY.split(",");
-        this.setStart_x(Integer.valueOf(cp[0]));
-        this.setStart_y(Integer.valueOf(cp[1]));
+        this.setStartX(Integer.valueOf(cp[0]));
+        this.setStartY(Integer.valueOf(cp[1]));
     }
 
     public void moveForward(){
         switch (direction){
-            case NORTH: start_y++;break;
-            case SOUTH: start_y--;break;
-            case WEST: start_x--;break;
-            case EAST: start_x++;break;
+            case NORTH: startY++;break;
+            case SOUTH: startY--;break;
+            case WEST: startX--;break;
+            case EAST: startX++;break;
         }
+    }
+
+    private boolean validMoves(String move){
+        return move.chars()
+                .mapToObj(c -> (char) c)
+                .allMatch(c -> VALID_INSTRUCTIONS.contains(String.valueOf(c)));
     }
 
 }

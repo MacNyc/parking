@@ -11,19 +11,19 @@ public class CarParking {
     public static final int SIDE_Y = 14;
 
 
-    public ParkingMoves ParkCar(String args){
+    public ParkingMoves carPosition(String move){
         ParkingMoves pm;
 
-        pm = createParkingMoves(args);
+        pm = createParkingMoves(move);
         pm.showNewPosition();
 
         return pm;
     }
 
-    public ParkingMoves createParkingMoves(String args){
+    private ParkingMoves createParkingMoves(String move){
         ParkingMoves pm = null;
 
-        String parts[] = args.split(":");
+        String parts[] = move.split(":");
         String startXY = parts [0];
         String moves = parts [1];
 
