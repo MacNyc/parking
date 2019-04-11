@@ -3,22 +3,24 @@ package com.testTech.wcg.Parking;
 import com.testTech.wcg.MoveDirection;
 import org.springframework.stereotype.Component;
 
+
 @Component
 public class CarParking {
 
     public static final int SIDE_X = 14;
     public static final int SIDE_Y = 14;
 
-    public ParkingMoves parkCar(String moves){
+
+    public ParkingMoves ParkCar(String args){
         ParkingMoves pm;
 
-        pm = parkCar(moves);
+        pm = createParkingMoves(args);
         pm.showNewPosition();
 
         return pm;
     }
 
-    private ParkingMoves createParkingMoves(String args){
+    public ParkingMoves createParkingMoves(String args){
         ParkingMoves pm = null;
 
         String parts[] = args.split(":");
