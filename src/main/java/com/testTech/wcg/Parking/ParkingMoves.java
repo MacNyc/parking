@@ -66,11 +66,11 @@ public class ParkingMoves {
         this.moves = moves;
     }
 
-    public String getStartPosition(){
+    public String getNewPosition(){
         return toPosition(startY, startX);
     }
 
-    public String getNewPosition(){
+    public String getStartPosition(){
         return toPosition(newY, newX);
     }
 

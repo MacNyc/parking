@@ -18,23 +18,35 @@ public class ParkingMovesTest {
 
     @Before
     public void dataCar3(){
-        pm = new ParkingMoves("5,5","RFLFRFLF", MoveDirection.NORTH, 14,14);
+        pm = new ParkingMoves("6,6","FFLFFLFFLFF", MoveDirection.NORTH, 15,15);
     }
 
     @Test
     public void showNewPositionTest(){
         pm.showNewPosition();
 
-        assertEquals("(5,5)", pm.getStartPosition());
-        assertEquals("(5,5)", pm.getNewPosition());
-        assertEquals("RFLFRFLF", pm.getMoves());
+        assertEquals("6,6", pm.getStartPosition());
+        assertEquals("6,6", pm.getNewPosition());
+        assertEquals("FFLFFLFFLFF", pm.getMoves());
     }
 
     @Test
     public void moveForwardTest(){
         pm.setDirection(MoveDirection.NORTH);
         pm.moveForward();
-        assertEquals("(6,5)", pm.getNewPosition());
+        assertEquals("7,6", pm.getNewPosition());
+
+        pm.setDirection(MoveDirection.SOUTH);
+        pm.moveForward();
+        assertEquals("6,6", pm.getNewPosition());
+
+        pm.setDirection(MoveDirection.EAST);
+        pm.moveForward();
+        assertEquals("6,7", pm.getNewPosition());
+
+        pm.setDirection(MoveDirection.WEST);
+        pm.moveForward();
+        assertEquals("6,6", pm.getNewPosition());
 
     }
 
