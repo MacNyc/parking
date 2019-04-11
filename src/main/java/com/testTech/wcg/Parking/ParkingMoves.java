@@ -67,11 +67,11 @@ public class ParkingMoves {
     }
 
     public String getNewPosition(){
-        return toPosition(startY, startX);
+        return toPosition(startX, startY);
     }
 
     public String getStartPosition(){
-        return toPosition(newY, newX);
+        return toPosition(newX, newY);
     }
 
     public MoveDirection getDirection(){
