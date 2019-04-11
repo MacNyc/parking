@@ -19,7 +19,7 @@ public class CarParkingTest {
     public void carFollowsPath1(){
         ParkingMoves pm = carParking.carPosition("5,5:RFLFRFLF");
 
-//        assertEquals("5,5", pm.getStartPosition());
+        assertEquals("5,5", pm.getStartPosition());
         assertEquals("RFLFRFLF", pm.getMoves());
         assertEquals("7,7", pm.getNewPosition());
     }
