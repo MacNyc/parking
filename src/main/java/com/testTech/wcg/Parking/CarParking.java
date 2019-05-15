@@ -12,9 +12,8 @@ public class CarParking {
 
 
     public ParkingMoves carPosition(String move){
-        ParkingMoves pm;
 
-        pm = createParkingMoves(move);
+        ParkingMoves pm = createParkingMoves(move);
         pm.showNewPosition();
 
         return pm;
@@ -27,8 +26,7 @@ public class CarParking {
         String startXY = parts [0];
         String moves = parts [1];
 
-        pm = new ParkingMoves(startXY, moves, MoveDirection.NORTH, SIDE_X, SIDE_Y);
-        return pm;
+        return new ParkingMoves(startXY, moves, MoveDirection.NORTH, SIDE_X, SIDE_Y);
 
     }
 }

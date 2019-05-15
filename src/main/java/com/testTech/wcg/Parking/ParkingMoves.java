@@ -19,7 +19,7 @@ public class ParkingMoves {
     private int newX;
     private int newY;
 
-    public ParkingMoves(String startXY, String moves, MoveDirection direction, int side_x, int sidy_y){
+    public ParkingMoves(String startXY, String moves, MoveDirection direction, int side_x, int sidy_y) {
         this.side_x = side_x;
         this.sidy_y = sidy_y;
         this.setStartPosition(startXY);
@@ -29,60 +29,66 @@ public class ParkingMoves {
         this.direction = direction;
     }
 
-    public void showNewPosition(){
-        for (int i = 0; i < moves.length(); i++){
+    public void showNewPosition() {
+        for (int i = 0; i < moves.length(); i++) {
             char c = moves.charAt(i);
 
-            switch (c){
-                case 'F': moveForward(); break;
-                case 'R': setDirection(direction.turnRight());break;
-                case 'L': setDirection(direction.turnLeft());break;
+            switch (c) {
+                case 'F':
+                    moveForward();
+                    break;
+                case 'R':
+                    setDirection(direction.turnRight());
+                    break;
+                case 'L':
+                    setDirection(direction.turnLeft());
+                    break;
             }
         }
     }
 
-    public int getStartX(){
+    public int getStartX() {
         return startX;
     }
 
-    public void setStartX(int startX){
+    public void setStartX(int startX) {
         this.startX = startX;
     }
 
-    public int getStartY(){
+    public int getStartY() {
         return startY;
     }
 
-    public void setStartY(int startY){
+    public void setStartY(int startY) {
         this.startY = startY;
     }
 
-    public String getMoves(){
+    public String getMoves() {
         return moves;
     }
 
-    public void setMoves(String moves){
-        if(validMoves(moves))
-        this.moves = moves;
+    public void setMoves(String moves) {
+        if (validMoves(moves))
+            this.moves = moves;
     }
 
-    public String getNewPosition(){
+    public String getNewPosition() {
         return toPosition(startY, startX);
     }
 
-    public String getStartPosition(){
+    public String getStartPosition() {
         return toPosition(newY, newX);
     }
 
-    public MoveDirection getDirection(){
+    public MoveDirection getDirection() {
         return direction;
     }
 
-    public void setDirection(MoveDirection direction){
+    public void setDirection(MoveDirection direction) {
         this.direction = direction;
     }
 
-    private String toPosition(int y, int x){
+    private String toPosition(int y, int x) {
         return new StringBuffer()
                 .append(y)
                 .append(",")
@@ -90,25 +96,38 @@ public class ParkingMoves {
                 .toString();
     }
 
-    private void setStartPosition(String startXY){
-        String cp [] = startXY.split(",");
+    private void setStartPosition(String startXY) {
+        String cp[] = startXY.split(",");
         this.setStartX(Integer.valueOf(cp[0]));
         this.setStartY(Integer.valueOf(cp[1]));
     }
 
-    public void moveForward(){
-        switch (direction){
-            case NORTH: startY++;break;
-            case SOUTH: startY--;break;
-            case WEST: startX--;break;
-            case EAST: startX++;break;
+    public void moveForward() {
+        switch (direction) {
+            case NORTH:
+                startY++;
+                break;
+            case SOUTH:
+                startY--;
+                break;
+            case WEST:
+                startX--;
+                break;
+            case EAST:
+                startX++;
+                break;
         }
     }
 
-    private boolean validMoves(String move){
+    private boolean validMoves(String move) {
         return move.chars()
                 .mapToObj(c -> (char) c)
                 .allMatch(c -> VALID_INSTRUCTIONS.contains(String.valueOf(c)));
     }
 
+    private void OutOfParkingException(int x, int y) {
+        if (x < 0 || x > side_x - 1) ;
+
+        if (y < 0 || y > sidy_y - 1) ;
+    }
 }
