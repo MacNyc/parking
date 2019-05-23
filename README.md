@@ -1,4 +1,4 @@
----------------------------coding exercise White Clarke Group - Graduated Java Developer--------------------------------------
+
 Automatic Parking system Problem
 
 The purpose of this exercise is to demonstrate TDD and come up with a solution to the problem given below.
